@@ -1,6 +1,7 @@
 package br.com.banco.controller;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,19 @@ public class TransferenciaController {
 
     @GetMapping("/listar")
     public Iterable<TransferenciaEntity> listar(@Nullable @RequestParam Long idConta
-                                               ,@Nullable @RequestParam LocalDateTime dataIni
-                                               ,@Nullable @RequestParam LocalDateTime dataFim
+                                               ,@Nullable @RequestParam String dIni
+                                               ,@Nullable @RequestParam String dFim
                                                ,@Nullable @RequestParam String nomeOperadorTransacao
                                                ){
+        LocalDateTime dataIni = null, dataFim = null;
+        if (dIni != null){
+            System.out.println(dIni);
+            System.out.println(dFim);
+            final DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            dataIni = LocalDateTime.parse(dIni, dataFormat);
+            dataFim = LocalDateTime.parse(dFim, dataFormat);
+    }
+
         if (idConta != null){
             // A sua api deve fornecer os dados de transferência de acordo com o número da conta bacária.
             return transferenciaService.listarPorConta(idConta);

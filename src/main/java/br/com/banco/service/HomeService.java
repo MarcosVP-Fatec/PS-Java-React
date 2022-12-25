@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
                             ,{"transferencia/listar?idConta=2"
                                  ,"Transfer&ecirc;ncia - Por Conta (2)"
                                  ,""}
-                            ,{"transferencia/listar?dataIni=2019-01-01&dataFim=2020-12-31"
+                            ,{"transferencia/listar?dIni=2019-01-01 00:00:00&dFim=2020-12-31 23:59:59"
                                  ,"Transfer&ecirc;ncia - Por Per&iacute;odo (2019 at&eacute; 2020)"
                                  ,""}
                             ,{"transferencia/listar?nomeOperadorTransacao=Beltrano"
@@ -40,7 +40,7 @@ import org.springframework.stereotype.Service;
                             ,{"transferencia/listar?nomeOperadorTransacao=Ronnyscley"
                                  ,"Transfer&ecirc;ncia - Por Operador (Ronnyscley)"
                                  ,""}
-                            ,{"transferencia/listar?dataIni=2019-01-01&dataFim=2020-12-31&nomeOperadorTransacao=Beltrano"
+                            ,{"transferencia/listar?dIni=2019-01-01 00:00:00&dFim=2020-12-31 23:59:59&nomeOperadorTransacao=Beltrano"
                                  ,"Transfer&ecirc;ncia - Por Per&iacute;odo|Operador (2019 at&eacute; 2020 | Beltrano)"
                                  ,""}
                            }; 
