@@ -22,7 +22,7 @@ import br.com.banco.service.TransferenciaService;
  */
 @RestController
 @RequestMapping(value = "/transferencia")
-@CrossOrigin(origins="*")
+@CrossOrigin
 public class TransferenciaController {
 
     @Autowired
