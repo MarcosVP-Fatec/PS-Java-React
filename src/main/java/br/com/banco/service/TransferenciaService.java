@@ -50,7 +50,7 @@ public class TransferenciaService {
      * Caso seja informado o nome do operador da transação, retornar todas as transferências relacionados à aquele operador.
      */
     public Iterable<TransferenciaEntity> listarPorOperador(String nomeOperador){
-        return transferenciaRepository.findByNomeOperadorTransacao(nomeOperador);
+        return transferenciaRepository.findByNomeOperadorTransacao(nomeOperador,nomeOperador);
     }
 
     /**
@@ -59,7 +59,7 @@ public class TransferenciaService {
     public Iterable<TransferenciaEntity> listarPorPeriodoOperador(String nomeOperador
                                                                  ,LocalDateTime dataIni
                                                                  ,LocalDateTime dataFim){
-        return transferenciaRepository.findByPeriodoAndNomeOperadorTransacao(nomeOperador, dataIni, dataFim);
+        return transferenciaRepository.findByPeriodoAndNomeOperadorTransacao("TRANSFERENCIA", nomeOperador, "TRANSFERENCIA", nomeOperador, dataIni, dataFim);
     }
 
 

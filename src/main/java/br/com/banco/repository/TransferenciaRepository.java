@@ -45,19 +45,25 @@ public interface TransferenciaRepository extends CrudRepository<TransferenciaEnt
     @Query("select T"
           +" from TransferenciaEntity T"
           +"      inner join T.conta  C"
-          +" where T.nomeOperadorTransacao is not null"
-          +"   and T.nomeOperadorTransacao = ?1"
+          +" where ( (T.nomeOperadorTransacao is not null and T.nomeOperadorTransacao = ?1) or"
+          +"         (T.nomeOperadorTransacao is null and C.nomeResponsavel = ?2)"
+          +"       )"
           +"   order by"+ORDEM_PADRAO)
-    public Iterable<TransferenciaEntity> findByNomeOperadorTransacao(String nomeOperadorTransacao); 
+    public Iterable<TransferenciaEntity> findByNomeOperadorTransacao(String nomeOperadorTransacao1
+                                                                    ,String nomeOperadorTransacao2); 
 
     // Caso todos os filtros sejam informados, retornar todas as transferências com base no período de tempo informado e o nome do operador.
     @Query("select T from TransferenciaEntity T inner join T.conta C"
-          +" where T.nomeOperadorTransacao is not null "
-          +"   and T.nomeOperadorTransacao = ?1"
-          +"   and T.dataTransferencia >= ?2"
-          +"   and T.dataTransferencia <= ?3"
+          +" where ( (T.tipo  = ?1 and T.nomeOperadorTransacao = ?2) or "
+          +"         (T.tipo != ?3 and C.nomeResponsavel = ?4)"
+          +"       )"
+          +"   and T.dataTransferencia >= ?5"
+          +"   and T.dataTransferencia <= ?6"
           +" order by"+ORDEM_PADRAO)
-    public Iterable<TransferenciaEntity> findByPeriodoAndNomeOperadorTransacao(String nomeOperadorTransacao
+    public Iterable<TransferenciaEntity> findByPeriodoAndNomeOperadorTransacao(String tipo1
+                                                                              ,String nomeOperadorTransacao1
+                                                                              ,String tipo2
+                                                                              ,String nomeOperadorTransacao2
                                                                               ,LocalDateTime dataIni
                                                                               ,LocalDateTime dataFim);
 

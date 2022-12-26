@@ -2,7 +2,6 @@ package br.com.banco.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -30,14 +29,12 @@ public class TransferenciaController {
 
     @GetMapping("/listar")
     public Iterable<TransferenciaEntity> listar(@Nullable @RequestParam Long idConta
-                                               ,@Nullable @RequestParam String dIni
-                                               ,@Nullable @RequestParam String dFim
+                                            ,@Nullable @RequestParam String dIni
+                                                   ,@Nullable @RequestParam String dFim
                                                ,@Nullable @RequestParam String nomeOperadorTransacao
                                                ){
         LocalDateTime dataIni = null, dataFim = null;
         if (dIni != null){
-            System.out.println(dIni);
-            System.out.println(dFim);
             final DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             dataIni = LocalDateTime.parse(dIni, dataFormat);
             dataFim = LocalDateTime.parse(dFim, dataFormat);
