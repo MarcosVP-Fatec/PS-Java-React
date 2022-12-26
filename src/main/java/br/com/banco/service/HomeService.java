@@ -43,6 +43,15 @@ import org.springframework.stereotype.Service;
                             ,{"transferencia/listar?dIni=2019-01-01 00:00:00&dFim=2020-12-31 23:59:59&nomeOperadorTransacao=Beltrano"
                                  ,"Transfer&ecirc;ncia - Por Per&iacute;odo|Operador (2019 at&eacute; 2020 | Beltrano)"
                                  ,""}
+                            ,{"transferencia/saldo"
+                                 ,"Saldo Total (Todos)"
+                                 ,""}
+                            ,{"transferencia/saldo?nomeOperadorTransacao=Beltrano"
+                                 ,"Saldo Total Por Operador (Beltrano)"
+                                 ,""}
+                            ,{"transferencia/saldo?nomeOperadorTransacao=Fulano"
+                                 ,"Saldo Total Por Operador (Fulano)"
+                                 ,""}
                            }; 
         final String pathContexto = "http://localhost:8080/banco/";
         for (String[] s : rotas) {

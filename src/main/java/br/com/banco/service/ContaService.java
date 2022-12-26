@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.banco.model.ContaEntity;
-import br.com.banco.model.RespostaModel;
 import br.com.banco.repository.ContaRepository;
 
 /**
@@ -19,8 +18,8 @@ public class ContaService {
     @Autowired
     private ContaRepository contaRepository;
 
-    @Autowired
-    private RespostaModel resposta;
+    // @Autowired
+    // private RespostaModel resposta;
 
     //Listar todas as contas
     public Iterable<ContaEntity> listar(){

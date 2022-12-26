@@ -68,7 +68,23 @@ public interface TransferenciaRepository extends CrudRepository<TransferenciaEnt
                                                                               ,LocalDateTime dataFim);
 
 
-    // As transações devem ser exibidas junto com o saldo total e o saldo total no período de acordo com o protótipo do documento.
+    // As transações devem ser exibidas junto com o saldo total (todos)
+    @Query("select sum(T.valor) from TransferenciaEntity T")
+    public Long sumSaldoTotalTodos();
 
+    // As transações devem ser exibidas junto com o saldo total (Operador)
+    @Query("select sum(T.valor) from TransferenciaEntity T"
+          +"       inner join T.conta  C"
+          +" where ( (T.tipo  = ?1 and T.nomeOperadorTransacao = ?2) or "
+          +"         (T.tipo != ?3 and C.nomeResponsavel = ?4)"
+          +"       )")
+    public Long sumSaldoTotalOperador(String tipo1
+                                     ,String nomeOperador2
+                                     ,String tipo3
+                                     ,String nomeOperador4);
+
+    // As transações devem ser exibidas junto com o saldo total (Operador)
+
+    // As transações devem ser exibidas junto com o saldo total no período de acordo com o protótipo do documento.
 
 }
